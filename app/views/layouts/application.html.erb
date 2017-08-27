@@ -9,6 +9,7 @@
   </head>
 
   <body>
+
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -20,11 +21,21 @@
                 </button>
                 <a class="navbar-brand" href="javascript:;"><i class="fa fa-cube"></i> Ent-Me!</a>
             </div>
+
             <div class="navbar-right navbar-utils">
                 <ul class="list-unstyled clearfix">
+                <%if current_user %>                        
                     <li class="hidden-xs">
-                      	<a href="register.html" class="btn"><span>sign up</span></a>
+                        <%= link_to "sign out" , destroy_user_session_path, method: :delete , class: "btn" %>
                     </li>
+                <%else%>
+                    <li class="hidden-xs">
+                      	<a href=<%=new_user_registration_path%> class="btn"><span>sign up</span></a>
+                    </li>
+                    <li class="hidden-xs">
+                        <%= link_to "sign in" , new_user_session_path  , class: "btn" %>
+                    </li>                    
+                <%end%>
                     <li id="navbar-totals" class="totals">
                     	<span class="hidden-xs">0 Items</span>
                         <span class=""> $0</span>
@@ -43,9 +54,6 @@
                         <li class=""><a href="shop.html">Films</a></li>
                         <li class=""><a href="shop.html">Games</a></li>
                         <li class=""><a href="shop.html">News</a></li>
-                        <li class="visible-xs col-xs-12">
-                        	<a href="shop.html" class="btn btn-default">Login <i class="fa fa-lock"></i></a>
-                        </li>
                     </ul>
                 </div>
                 <form id="search-form" class="navbar-form" role="form" method="get" action="search.html">
@@ -60,16 +68,12 @@
                 </form>
             </div>
             <!--/.navbar-collapse -->
-        </div>
+        </div>       
+        <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
     </nav>
 
-
-
-    <%= yield %>
-
-
-
-
+            <%= yield %>
 
     <footer id="page-footer">
         <div class="container">
