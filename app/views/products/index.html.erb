@@ -15,7 +15,7 @@
          <h4>Categories</h4>
            <ul class="list-unstyled  categories-group ">
               <% @categories.each do |category| %>
-                 <li><%= link_to category.name , products_type_path(params[:type], category_id: category.id), class: "badge"%></li>
+                 <li><%= link_to category.name , products_type_path(params[:type], category_id: category.id), class: "active"%></li>
                <% end %>
             </ul>
          </div>
@@ -37,7 +37,7 @@
                            </div>
                            <div class="buttons-holder">
                               <input type="hidden" name="productId" value="15">
-                              <a class="btn btn-danger btn-add-cart" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals, #product-page=shop-product">Add to Cart</a>
+                              <%= link_to "Add to Cart", cart_path(product_id: product.id), class: "btn btn-danger btn-add-cart" %>
                            </div>  
                         </div>
                      </form>
@@ -54,6 +54,7 @@
                <li><a href="shop.html">Next Page</a></li>
             </ul>
          </div>
+         <%= paginate @products %>
       </div>
    </div>
 </section>
