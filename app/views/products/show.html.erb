@@ -1,0 +1,148 @@
+<main id="page-content" class="wrap container">
+    <div itemscope="" itemtype="http://schema.org/Product">
+		<div id="banner" class="jumbotron row">
+			<h1 itemprop="name"><%=@product.title %></h1>
+		</div>
+		<section id="single-product" class="page-section">
+			<ol class="breadcrumb">
+  				<li class="hidden-xs"><%= link_to 'Products' , home_index_url %></li>
+				<li><%= link_to @product.type , products_type_path(@product.type.downcase.pluralize) %></li>
+				<li class="active"><a href="javascript:;"><%=@product.title %></a></li>
+  			</ol>
+			<form class="custom" onsubmit="return false" method="post" action="javascript:;">
+				<div class="row">
+					<div id="product-images">
+						<div class="col-xs-12 col-sm-6">
+							<div id="product-gallery" class="carousel slide" data-ride="carousel" data-interval="false">
+								<div class="carousel-inner">
+									<div class="item active" id="slide2">
+										<div data-lg="img/OrangeHeadphones_400x300-jpg-keep-ratio.png" class="product-img-zoom" style="position: relative; overflow: hidden;">
+											<img class="img-responsive" alt="" src="<%=@product.image %>" itemprop="image">
+											<img src="<%= @product.image %>" class="zoomImg" style="position: absolute; top: -34.0744px; left: -421.533px; width: 1270px; height: 1270px; border: none; max-width: none; max-height: none; opacity: 0;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="img-modalLabel" aria-hidden="true">
+  							<div class="modal-dialog modal-xl">
+    							<div class="modal-content">
+      								<div class="modal-header">
+        								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      								</div>
+      								<div class="modal-body">
+        								<img class="img-responsive">
+      								</div>
+    							</div>
+  							</div>
+						</div>
+					</div>
+					<div id="product-page">
+						<div class="col-sm-6">
+							<div class="price" itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+								<h2 itemprop="price">$<%= @product.price %></h2>
+								<link itemprop="availability" href="http://schema.org/InStock">
+							</div>	
+							<div class="excerpt" itemprop="description">
+								<p>Why have black headphones when you can have Blue?</p>
+							</div>
+							<input type="hidden" name="productId" value="6">
+							<div class="add-cart-holder form-group">
+								<div class="quantity-selector">
+									<button class="quantity-btn minus btn btn-lg btn-default"><i class="fa fa-minus"></i></button>
+									<input class="form-control quantity" type="text" value="1" name="quantity">
+									<button class="quantity-btn plus btn btn-lg btn-default"><i class="fa fa-plus"></i></button>
+								</div>
+								<a class="btn btn-lg btn-danger btn-add-cart" href="#" data-ajax-handler="shop:onAddToCart" data-ajax-update="#mini-cart=shop-minicart, #product-page=shop-product, #navbar-totals=shop-minicart-totals">Add to Cart <i class="fa fa-shopping-cart"></i></a>
+							</div>
+							<div id="sharrre" class="social-buttons">
+								<h6 class="share-title">share with your friends</h6>
+								<ul class="inline list-inline square-icons">
+									<li class="facebook sharrre"><a href="#" rel="tooltip" title="" data-original-title="Facebook: 0"><i class="fa fa-facebook"></i></a></li>
+									<li class="twitter sharrre"><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li class="pinterest sharrre"><a href="#" rel="tooltip" title="" data-original-title="Pinterest: 0"><i class="fa fa-pinterest"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<!-- review -->
+			<div  class="review-box row">
+				<div href="#" class="">
+					<div class="container">
+						<div class="col-md-9 col-sm-9 col-xs-9">
+							<textarea class="form-control" rows="2" id="comment"></textarea>
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3 text-center">
+							<button type="button" class="btn btn-primary btn-lg btn-block">Add Review!</button>
+							<div class="stars">
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+								<i class="fa fa-star-o" aria-hidden="true"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h1 class="review-header text-center" >REVIEWS</h1>
+				<div class="list-group">
+					<!-- item  -->
+					<a href="#" class="list-group-item">
+						<div class="container">
+							<div class="media col-md-2 col-sm-2 col-xs-2">
+								<figure >
+									<p class="text-bold"><i class="color-review fa fa-user" aria-hidden="true"></i> Mohamed said</p>
+									<p class="text-bold"><i class="color-review fa fa-clock-o" aria-hidden="true"></i> 20:00 pm</p>
+									<p class="text-bold"><i  class="color-review fa fa-calendar-o" aria-hidden="true"></i> 31 DEC 2014</p>
+								</figure>
+							</div>
+							<div class="col-md-7 col-sm-7 col-xs-7">
+								<p class="list-group-item-text"> Eu eum corpora torquatos, ne postea constituto mea, quo tale lorem facer no. Ut sed odio appetere partiendo, quo meliore salutandi ex. Vix an sanctus vivendo, sed vocibus accumsan petentium ea.
+																Sed integre saperet at, no nec debet erant, quo dico incorrupte comprehensam ut. Et minimum consulatu ius, an dolores iracundia est, oportere vituperata interpretaris sea an. Sed id error quando indoctum, mel suas saperet at.</p>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 text-center">
+								<div class="stars">
+									<i  class="color-review fa fa-star" aria-hidden="true"></i>
+									<i class="color-review fa fa-star" aria-hidden="true"></i>
+									<i class="color-review fa fa-star" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+									<i class="fa fa-star-o" aria-hidden="true"></i>
+								</div>
+								<p> Average 3.9 <small> / </small> 5 </p>
+							</div>
+						</div>
+					</a>
+					<!-- item  -->
+					<a href="#" class="list-group-item">
+						<div class="container">
+							<div class="media col-md-2 col-sm-2 col-xs-2">
+								<figure >
+									<p class="text-bold"><i class="color-review fa fa-user" aria-hidden="true"></i> Mohamed said</p>
+									<p class="text-bold"><i class="color-review fa fa-clock-o" aria-hidden="true"></i> 20:00 pm</p>
+									<p class="text-bold"><i  class="color-review fa fa-calendar-o" aria-hidden="true"></i> 31 DEC 2014</p>
+								</figure>
+							</div>
+							<div class="col-md-7 col-sm-7 col-xs-7">
+								<p class="list-group-item-text"> Eu eum corpora torquatos, ne postea constituto mea, quo tale lorem facer no. Ut sed odio appetere partiendo, quo meliore salutandi ex. Vix an sanctus vivendo, sed vocibus accumsan petentium ea.
+															Sed integre saperet at, no nec debet erant, quo dico incorrupte comprehensam ut. Et minimum consulatu ius, an dolores iracundia est, oportere vituperata interpretaris sea an. Sed id error quando indoctum, mel suas saperet at.</p>
+							</div>
+							<div class="col-md-3 col-sm-3 col-xs-3 text-center">
+								<div class="stars">
+									<i  class="color-review fa fa-star" aria-hidden="true"></i>
+									<i class="color-review fa fa-star" aria-hidden="true"></i>
+									<i class="color-review fa fa-star" aria-hidden="true"></i>
+									<i class="color-review fa fa-star" aria-hidden="true"></i>
+									<i class="color-review fa fa-star" aria-hidden="true"></i>
+								</div>
+									<p> Average 3.9 <small> / </small> 5 </p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<!-- end review  -->
+		</section>
+	</div>	
+</main>
