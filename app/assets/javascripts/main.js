@@ -21,6 +21,18 @@
 		$(document).on('click', '.page-items-controller a', function() {
 			$(this).addClass('active').html('<i class="fa fa-refresh fa-spin"></i>').siblings().removeClass('active');
 		});
+
+		var $input = $("#txtAcrescimo");
+		$input.val(0);
+		$(".quantity-btn").click(function(){
+    	if ($(this).hasClass('plus'))
+        	$input.val(parseInt($input.val())+1);
+    	else if ($input.val()>1)
+        	$input.val(parseInt($input.val())-1);
+		});		
+
 	});
 
 })(jQuery);
+
+
