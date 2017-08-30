@@ -4,5 +4,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.belongs_to :user, index: true
       t.timestamps
     end
+    #remove_column :orders, :order_count
   end
 end
+

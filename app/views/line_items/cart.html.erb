@@ -1,0 +1,67 @@
+<body cz-shortcut-listen="true">
+   <main id="page-content" class="wrap container">
+      <div id="banner" class="jumbotron row">
+         <h1>Shopping Cart</h1>
+      </div>
+      <section id="cart" class="page-section row">
+         <form class="custom" method="post" action="">
+            <div id="cart-content">
+               <div class="col-xs-12 col-md-9">
+                  <div class="items-holder">
+                     <div class="cart-labels clearfix hidden-xs">
+                        <div class="col-sm-4 col-sm-offset-2 col-lg-5">Item</div>
+                        <div class="col-sm-3 col-lg-2">Quantity</div>
+                        <div class="col-sm-3 col-lg-3">Item Total</div>
+                     </div>
+
+                     <% @lines.each do |l| %>
+                        <div class="cart-item row">
+                           <div class="col-xs-12 col-sm-2">
+                              <div class="product-thumb">
+                                 <img class="img-responsive" alt="Blue Headphones" src="<%= l.product.image %>">   
+                              </div>
+                           </div>
+                           <div class="col-xs-12 col-sm-4 col-lg-5 cart-details">
+                              <div class="h4 product-title">
+                                 <a href=""><%= l.product.title %></a>
+                                 <p><small class="unit-price">$ <%= l.product.price %></small></p>
+                              </div>
+                           </div>
+                           <div class="col-xs-12 col-sm-3 col-lg-2 cart-details ">
+                              <div class="quantity">
+                                 <div class="quantity-selector">
+                                    <button class="quantity-btn minus btn btn-lg btn-default"><i class="fa fa-minus"></i></button>
+                                    <input type="text" name="item_quantity[599b303a5c693]" class="form-control quantity" value="<%= l.count %>">
+                                    <button class="quantity-btn plus btn btn-lg btn-default"><i class="fa fa-plus"></i></button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-xs-12 col-sm-3 col-lg-3 cart-details">
+                              <div class="h4 total-price">$<%= l.count * l.product.price %></div>
+                              <a class="remove-item" href="" data-ajax-handler="shop:cart" data-ajax-update="#cart-content=shop-cart-content, #mini-cart=shop-minicart, #navbar-totals=shop-minicart-totals" data-ajax-extra-fields="delete_item=&#39;599b303a5c693&#39;"><i class="fa fa-times"></i></a>
+                           </div>
+                        </div>
+                     <% end %>
+
+
+                  </div>
+                  <div id="cart-actions" class="btn-holder clearfix">
+                     <a class="btn btn-default btn-continue-shopping pull-left" href=""><i class="fa fa-arrow-left"></i> Continue Shopping</a>
+                  </div>
+               </div>
+               <div class="col-xs-12 col-md-3">
+                  <h3>Order Summary</h3>
+                  <p class="h6">Shipping costs and taxes will be evaluated during checkout</p>
+                  <ul class="price-list list-group">
+                     <li class="list-group-item">Subtotal: <span class="badge">$99.00</span></li>
+                     <li class="list-group-item important">Total: <span class="badge">$99.00</span></li>
+                  </ul>
+                  <a class="col-xs-12 btn btn-danger solid btn-lg" href="">Checkout</a>
+               </div>
+            </div>
+         </form>
+      </section>
+	</main>
+   <div class="ls-loading-indicator" id="loading-indicator" style="display: none;"><span>Loading...</span></div>
+</body>
+

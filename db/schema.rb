@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170829113350) do
   create_table "line_items", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "order_id"
+    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_line_items_on_order_id"

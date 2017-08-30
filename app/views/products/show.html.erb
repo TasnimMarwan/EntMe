@@ -9,7 +9,7 @@
 				<li><%= link_to @product.type , products_type_path(@product.type.downcase.pluralize) %></li>
 				<li class="active"><a href="javascript:;"><%=@product.title %></a></li>
   			</ol>
-			<form class="custom" onsubmit="return false" method="post" action="javascript:;">
+			<div class="custom">
 				<div class="row">
 					<div id="product-images">
 						<div class="col-xs-12 col-sm-6">
@@ -47,15 +47,15 @@
 								<p>Why have black headphones when you can have Blue?</p>
 							</div>
 							<input type="hidden" name="productId" value="6">
-							<div class="add-cart-holder form-group">
+							<form action="<%= cart_path %>" class="add-cart-holder form-group" method="get" >
 								<div class="quantity-selector">
 									<button class="quantity-btn minus btn btn-lg btn-default"><i class="fa fa-minus"></i></button>
+									<input type="hidden" value="<%=@product.id%>" name="product_id">
 									<input id="txtAcrescimo" class="form-control quantity" type="text" value="1" name="quantity">
 									<button class="quantity-btn plus btn btn-lg btn-default"><i class="fa fa-plus"></i></button>
 								</div>
-								<%= link_to "Add to Cart", cart_path(product_id: @product.id), class: "btn btn-danger btn-add-cart" %>
-
-							</div>
+								<input type="submit" value="Add to Cart" class= "btn btn-danger btn-add-cart"/>
+							</form>				
 							<div id="sharrre" class="social-buttons">
 								<h6 class="share-title">share with your friends</h6>
 								<ul class="inline list-inline square-icons">
@@ -67,7 +67,7 @@
 						</div>
 					</div>
 				</div>
-			</form>
+			</div>
 			<!-- review -->
 			<div  class="review-box row">
 				<div href="#" class="">

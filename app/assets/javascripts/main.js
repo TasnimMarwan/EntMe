@@ -23,12 +23,13 @@
 		});
 
 		var $input = $("#txtAcrescimo");
-		$input.val(0);
+		$input.val(1);
 		$(".quantity-btn").click(function(){
     	if ($(this).hasClass('plus'))
         	$input.val(parseInt($input.val())+1);
     	else if ($input.val()>1)
         	$input.val(parseInt($input.val())-1);
+        return false
 		});		
 
 	});
