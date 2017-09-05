@@ -3,4 +3,5 @@ class Product < ApplicationRecord
 	scope :cat, ->(a) { (where("category_id = ?", a) ) if a.present? }
 	has_many :line_items
 	has_many :orders, through: :line_items
+	has_many :reviews
 end

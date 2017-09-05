@@ -70,13 +70,15 @@
 			</div>
 			<!-- review -->
 			<div  class="review-box row">
-				<div href="#" class="">
+				<form class="" method="post" data-remote="true" action="<%= reviews_path %>">
 					<div class="container">
 						<div class="col-md-9 col-sm-9 col-xs-9">
-							<textarea class="form-control" rows="2" id="comment"></textarea>
+							<textarea class="form-control" rows="2" name="comment"></textarea>
+							<textarea class="form-control" rows="2" name="rate"></textarea>
+							<input type="hidden" value="<%=@product.id%>" name="product_id">
 						</div>
 						<div class="col-md-3 col-sm-3 col-xs-3 text-center">
-							<button type="button" class="btn btn-primary btn-lg btn-block">Add Review!</button>
+							<button type="submit" class="btn btn-primary btn-lg btn-block">Add Review!</button>
 							<div class="stars">
 								<i class="fa fa-star-o" aria-hidden="true"></i>
 								<i class="fa fa-star-o" aria-hidden="true"></i>
@@ -86,61 +88,12 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 				<h1 class="review-header text-center" >REVIEWS</h1>
 				<div class="list-group">
-					<!-- item  -->
-					<a href="#" class="list-group-item">
-						<div class="container">
-							<div class="media col-md-2 col-sm-2 col-xs-2">
-								<figure >
-									<p class="text-bold"><i class="color-review fa fa-user" aria-hidden="true"></i> Mohamed said</p>
-									<p class="text-bold"><i class="color-review fa fa-clock-o" aria-hidden="true"></i> 20:00 pm</p>
-									<p class="text-bold"><i  class="color-review fa fa-calendar-o" aria-hidden="true"></i> 31 DEC 2014</p>
-								</figure>
-							</div>
-							<div class="col-md-7 col-sm-7 col-xs-7">
-								<p class="list-group-item-text"> Eu eum corpora torquatos, ne postea constituto mea, quo tale lorem facer no. Ut sed odio appetere partiendo, quo meliore salutandi ex. Vix an sanctus vivendo, sed vocibus accumsan petentium ea.
-																Sed integre saperet at, no nec debet erant, quo dico incorrupte comprehensam ut. Et minimum consulatu ius, an dolores iracundia est, oportere vituperata interpretaris sea an. Sed id error quando indoctum, mel suas saperet at.</p>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 text-center">
-								<div class="stars">
-									<i  class="color-review fa fa-star" aria-hidden="true"></i>
-									<i class="color-review fa fa-star" aria-hidden="true"></i>
-									<i class="color-review fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-									<i class="fa fa-star-o" aria-hidden="true"></i>
-								</div>
-								<p> Average 3.9 <small> / </small> 5 </p>
-							</div>
-						</div>
-					</a>
-					<!-- item  -->
-					<a href="#" class="list-group-item">
-						<div class="container">
-							<div class="media col-md-2 col-sm-2 col-xs-2">
-								<figure >
-									<p class="text-bold"><i class="color-review fa fa-user" aria-hidden="true"></i> Mohamed said</p>
-									<p class="text-bold"><i class="color-review fa fa-clock-o" aria-hidden="true"></i> 20:00 pm</p>
-									<p class="text-bold"><i  class="color-review fa fa-calendar-o" aria-hidden="true"></i> 31 DEC 2014</p>
-								</figure>
-							</div>
-							<div class="col-md-7 col-sm-7 col-xs-7">
-								<p class="list-group-item-text"> Eu eum corpora torquatos, ne postea constituto mea, quo tale lorem facer no. Ut sed odio appetere partiendo, quo meliore salutandi ex. Vix an sanctus vivendo, sed vocibus accumsan petentium ea.
-															Sed integre saperet at, no nec debet erant, quo dico incorrupte comprehensam ut. Et minimum consulatu ius, an dolores iracundia est, oportere vituperata interpretaris sea an. Sed id error quando indoctum, mel suas saperet at.</p>
-							</div>
-							<div class="col-md-3 col-sm-3 col-xs-3 text-center">
-								<div class="stars">
-									<i  class="color-review fa fa-star" aria-hidden="true"></i>
-									<i class="color-review fa fa-star" aria-hidden="true"></i>
-									<i class="color-review fa fa-star" aria-hidden="true"></i>
-									<i class="color-review fa fa-star" aria-hidden="true"></i>
-									<i class="color-review fa fa-star" aria-hidden="true"></i>
-								</div>
-									<p> Average 3.9 <small> / </small> 5 </p>
-							</div>
-						</div>
-					</a>
+					<% @reviews.each do |r| %>
+						<%= render 'review', {:review => r} %>
+					<% end %>
 				</div>
 			</div>
 			<!-- end review  -->
