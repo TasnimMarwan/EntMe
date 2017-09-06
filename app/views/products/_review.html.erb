@@ -11,13 +11,8 @@
 			<p class="list-group-item-text"><%= review.comment %></p>
 		</div>
 		<div class="col-md-3 col-sm-3 col-xs-3 text-center">
-			<div class="stars">
-				<i  class="color-review fa fa-star" aria-hidden="true"></i>
-				<i class="color-review fa fa-star" aria-hidden="true"></i>
-				<i class="color-review fa fa-star" aria-hidden="true"></i>
-				<i class="fa fa-star-o" aria-hidden="true"></i>
-				<i class="fa fa-star-o" aria-hidden="true"></i>
-			</div>
+
+			<div class="rateYo" data-rateyo-read-only="true" data-rate=<%= review.rate || 0%>></div>
 			<p><%= review.rate %><small> / </small> 5 </p>
 		</div>
 	</div>

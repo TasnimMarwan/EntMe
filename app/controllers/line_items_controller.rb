@@ -7,9 +7,10 @@ class LineItemsController < ApplicationController
 			line.count  = line.count +  params[:quantity].to_i
 			line.save
 		else
-			lineitem = LineItem.create(order_id: order.id, product_id: params[:product_id], count: params[:quantity])
+			line = LineItem.create(order_id: order.id, product_id: params[:product_id], count: params[:quantity])
 		end
-		redirect_to home_index_path
+       	render json: {counter: LineItem.where(:order_id => order.id).count}
+		#redirect_to home_index_path
 	end
 
 	def cart

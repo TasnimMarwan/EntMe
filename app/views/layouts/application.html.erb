@@ -37,8 +37,11 @@
                     </li>                    
                 <%end%>
                     <li id="navbar-totals" class="totals">
-                    	<span class="hidden-xs">0 Items</span>
-                        <span class=""> $0</span>
+                    	<span class="hidden-xs"><%= @counter %></span>
+                        <span class=""> Item </span>
+                        <span class=""> $</span>
+                        <span class=""><%= @sum %></span>
+
                     </li>
                     <li class="dropdown">
                         <a href=<%=view_cart_path %> class="btn btn-primary cart-btn">
